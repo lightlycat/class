@@ -13,6 +13,12 @@ public class DistributedGrepMapper extends Mapper<Object, Text, NullWritable, Te
 
 	public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
 		String term =context.getConfiguration().get("mapregex");
+		// Parse the input string into a nice map
+		Map<String, String> parsed = MRDPUtils.transformXmlToMap(value.toString());
+
+		// Grab the necessary XML attributes
+		String about = parsed.get("AboutMe");
+		String reputation = parsed.get("PReputation");
 
 	}
 }

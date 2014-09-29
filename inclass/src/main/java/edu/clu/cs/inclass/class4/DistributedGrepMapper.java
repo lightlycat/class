@@ -12,7 +12,7 @@ import edu.clu.cs.inclass.utils.MRDPUtils;
 public class DistributedGrepMapper extends Mapper<Object, Text, NullWritable, Text> {
 
 	public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
-
+		String term =context.getConfiguration().get("mapregex");
 
 	}
 }

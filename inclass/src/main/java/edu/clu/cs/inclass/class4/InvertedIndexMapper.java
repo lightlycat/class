@@ -31,15 +31,7 @@ public class InvertedIndexMapper extends Mapper<Object, Text, Text, Text> {
 			return;
 		}
 		txt = StringEscapeUtils.unescapeHtml(txt.toLowerCase());
-		String[] tokens = txt.split(" "); 
-		for(String token:tokens) {
-			token = token.trim();
-			if(token.length()>2 && StringUtils.isAlpha(token)) {
-				word.set(token);
-				docId.set(row_id);
-				context.write(word, docId);
-			}
-		}
 
+		
 	}
 }

@@ -18,7 +18,7 @@ public class DistributedGrepMapper extends Mapper<Object, Text, NullWritable, Te
 
 		// Grab the necessary XML attributes
 		String about = parsed.get("AboutMe");
-		String reputation = parsed.get("PReputation");
+		String reputation = parsed.get("Reputation");
 
 	}
 }

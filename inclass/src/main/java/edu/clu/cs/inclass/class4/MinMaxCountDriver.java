@@ -11,7 +11,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 public class MinMaxCountDriver {
 	 public static void main(String[] args) throws Exception {
 	        
-		    Job job = Job.getInstance(new Configuration(), "inverted index");
+		    Job job = Job.getInstance(new Configuration(), "min max count");
 		    
 		    job.setOutputKeyClass(Text.class);
 		    job.setOutputValueClass(MinMaxCountTuple.class);

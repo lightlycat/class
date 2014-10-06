@@ -40,14 +40,12 @@ public class MinMaxCountTuple implements Writable {
 		this.count = count;
 	}
 
-	@Override
 	public void readFields(DataInput in) throws IOException {
 		min = new Date(in.readLong());
 		max = new Date(in.readLong());
 		count = in.readLong();
 	}
 
-	@Override
 	public void write(DataOutput out) throws IOException {
 		out.writeLong(min.getTime());
 		out.writeLong(max.getTime());

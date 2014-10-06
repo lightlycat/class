@@ -27,10 +27,6 @@ public class DistributedGrepDriver {
 
 		job.setNumReduceTasks(0);
 
-		job.setInputFormatClass(TextInputFormat.class);
-		job.setOutputFormatClass(NullOutputFormat.class);
-
-		conf.set("mapregex", args[0]);
 		FileInputFormat.addInputPath(job, new Path(args[1]));
 		FileOutputFormat.setOutputPath(job, new Path(args[2]));
 

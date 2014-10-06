@@ -1,8 +1,12 @@
 package edu.clu.cs.inclass.class4;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.io.Text;
@@ -31,7 +35,14 @@ public class InvertedIndexMapper extends Mapper<Object, Text, Text, Text> {
 			return;
 		}
 		txt = StringEscapeUtils.unescapeHtml(txt.toLowerCase());
-
+		String[] words = txt.split(" ");
+		for(String w:words) {
+			if(w.length()>2 && StringUtils.isAlpha(w)) {
+				word.set(w);
+				docId.set(row_id);
+				context.write(word,docId);
+			}
+		}
 		
 	}
 }

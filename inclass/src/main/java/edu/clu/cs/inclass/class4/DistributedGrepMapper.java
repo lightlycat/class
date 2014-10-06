@@ -19,6 +19,13 @@ public class DistributedGrepMapper extends Mapper<Object, Text, NullWritable, Te
 		// Grab the necessary XML attributes
 		String about = parsed.get("AboutMe");
 		String reputation = parsed.get("Reputation");
+		
+		if(about == null || reputation ==null) return;
+		
+		if(Integer.parseInt(reputation)>1000 && about.contains(term)) {
+			context.write(NullWritable.get(),value);
+		}
+		
 
 	}
 }

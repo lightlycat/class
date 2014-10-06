@@ -18,11 +18,12 @@ public class MedianSalaryAnalysis {
 
 	Notes:
 	  Ignore zero salaries
-	  Ignore where salary cannot be interpreted as a number. E.g. Ignore salary Ò200,000+Ó and Ò2,500-Ó
+	  Ignore where salary cannot be interpreted as a number. E.g. Ignore salary ï¿½200,000+ï¿½ and ï¿½2,500-ï¿½
 
 	 */
 
 	public static void main(String[] args) throws Exception {
+		
 		BufferedReader br = new BufferedReader(new FileReader(args[0])); 
 		String line;
 		int lowestIncome = Integer.MAX_VALUE;

@@ -1,0 +1,36 @@
+package edu.clu.cs.inclass.class5;
+
+import java.io.IOException;
+import java.util.Map;
+
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+
+import edu.clu.cs.inclass.utils.MRDPUtils;
+
+public class PostMapper  extends Mapper<Object, Text, Text, Text> {
+
+	private Text outkey = new Text();
+	private Text outvalue = new Text();
+
+	@Override
+	public void map(Object key, Text value, Context context)
+			throws IOException, InterruptedException {
+
+		// Parse the input string into a nice map
+		Map<String, String> parsed = MRDPUtils.transformXmlToMap(value.toString());
+
+		String postId = parsed.get("Id");
+
+		if (postId == null) {
+			return;
+		}
+
+		// The foreign join key is the post ID
+		outkey.set(postId);
+
+		// Flag this record for the reducer and then output
+		outvalue.set("P" + value.toString());
+		context.write(outkey, outvalue);
+	}
+}
